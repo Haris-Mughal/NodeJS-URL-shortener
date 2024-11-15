@@ -39,9 +39,11 @@ async function getRedirectedURL(req, res) {
 async function getAnalytics(req, res) {
     const shortId = req.params.shortId;
     const entity = await URL.findOne({ shortId });
+
+    const visit = entity.visitHistory;
     res.json({
-        totalVisitCount: entity.visitHistory.length,
-        visitHistory: entity.visitHistory,
+        totalVisitCount: visit.length,
+        visitHistory: visit,
     });
 }
 
