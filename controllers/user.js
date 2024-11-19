@@ -26,12 +26,9 @@ async function userLogin(req, res) {
             error: "Invalid credentials",
         });
 
-    const sessionId = uuidv4();
-    setUser(sessionId, user);
+    const token = setUser(user);
 
-    res.cookie("uid", sessionId);
-
-    return res.redirect("/");
+    return res.json({ token });
 }
 
 module.exports = {
