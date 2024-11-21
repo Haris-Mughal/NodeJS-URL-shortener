@@ -4,7 +4,7 @@ const URL = require("../models/url");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    if (!req.user) return res.redirect("/login"); // it redirect me to '/login' coz it didn't found 'req.user'... but why :(((
+    if (!req.user) return res.redirect("/login");
 
     const allURLs = await URL.find({ createdBy: req.user._id });
 
